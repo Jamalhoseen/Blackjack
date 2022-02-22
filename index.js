@@ -142,4 +142,23 @@
             check();
         }
 
-        
+          // returns the number of points that a player has in hand
+          function getPoints(player)
+          {
+              var points = 0;
+              for(var i = 0; i < players[player].Hand.length; i++)
+              {
+                  points += players[player].Hand[i].Weight;
+              }
+              players[player].Points = points;
+              return points;
+          }
+  
+          function updatePoints()
+          {
+              for (var i = 0 ; i < players.length; i++)
+              {
+                  getPoints(i);
+                  document.getElementById('points_' + i).innerHTML = players[i].Points;
+              }
+          }
