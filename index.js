@@ -130,4 +130,16 @@
             return el;
         }
 
+        function hitMe()
+        {
+            // pop a card from the deck to the current player
+            // check if current player new points are over 21
+            var card = deck.pop();
+            players[currentPlayer].Hand.push(card);
+            renderCard(card, currentPlayer);
+            updatePoints();
+            updateDeck();
+            check();
+        }
+
         
