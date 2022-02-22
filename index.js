@@ -73,3 +73,41 @@
                 document.getElementById('players').appendChild(div_player);
             }
         }
+
+        function startblackjack()
+        {
+            document.getElementById('btnStart').value = 'Restart';
+            document.getElementById("status").style.display="none";
+            // deal 2 cards to every player object
+            currentPlayer = 0;
+            createDeck();
+            shuffle();
+            createPlayers(2);
+            createPlayersUI();
+            dealHands();
+            document.getElementById('player_' + currentPlayer).classList.add('active');
+        }
+
+        function dealHands()
+        {
+            // alternate handing cards to each player
+            // 2 cards each
+            for(var i = 0; i < 2; i++)
+            {
+                for (var x = 0; x < players.length; x++)
+                {
+                    var card = deck.pop();
+                    players[x].Hand.push(card);
+                    renderCard(card, x);
+                    updatePoints();
+                }
+            }
+
+            updateDeck();
+        }
+
+        function renderCard(card, player)
+        {
+            var hand = document.getElementById('hand_' + player);
+            hand.appendChild(getCardUI(card));
+        }
