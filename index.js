@@ -142,6 +142,22 @@
             check();
         }
 
+
+        function stay()
+        {
+            // move on to next player, if any
+            if (currentPlayer != players.length-1) {
+                document.getElementById('player_' + currentPlayer).classList.remove('active');
+                currentPlayer += 1;
+                document.getElementById('player_' + currentPlayer).classList.add('active');
+            }
+
+            else {
+                end();
+            }
+        }
+
+        
           // returns the number of points that a player has in hand
           function getPoints(player)
           {
