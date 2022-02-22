@@ -157,7 +157,7 @@
             }
         }
 
-        
+
           // returns the number of points that a player has in hand
           function getPoints(player)
           {
@@ -177,4 +177,23 @@
                   getPoints(i);
                   document.getElementById('points_' + i).innerHTML = players[i].Points;
               }
+          }
+
+          function end()
+          {
+              var winner = -1;
+              var score = 0;
+  
+              for(var i = 0; i < players.length; i++)
+              {
+                  if (players[i].Points > score && players[i].Points < 22)
+                  {
+                      winner = i;
+                  }
+  
+                  score = players[i].Points;
+              }
+  
+              document.getElementById('status').innerHTML = 'Winner: Player ' + players[winner].ID;
+              document.getElementById("status").style.display = "inline-block";
           }
